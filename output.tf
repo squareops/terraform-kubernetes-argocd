@@ -1,9 +1,8 @@
-output "argocd_username" {
-  description = "Argocd Username"
-  value       = "admin"
-}
-
-output "argocd_password" {
-  description = "Argocd Password"
-  value       = nonsensitive(data.kubernetes_secret.argocd-secret.data.password)
+output "argocd" {
+  description = "Argocd_Info"
+  value = {
+    username = "admin",
+    password = nonsensitive(data.kubernetes_secret.argocd-secret.data.password),
+    url      = var.argocd_config.hostname
+  }
 }

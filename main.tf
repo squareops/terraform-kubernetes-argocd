@@ -9,19 +9,18 @@ resource "helm_release" "argocd_deploy" {
   depends_on = [kubernetes_namespace.argocd]
 
   name       = "argo-cd"
-  repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
-  namespace  = var.namespace
   timeout    = 600
   version    = var.chart_version
-
+  namespace  = var.namespace
+  repository = "https://argoproj.github.io/argo-helm"
   values = [
     templatefile("${path.module}/helm/values/values.yaml", {
       hostname                  = var.argocd_config.hostname
-      redis_ha_enable           = var.argocd_config.redis_ha_enable
+      slack_token               = var.argocd_config.slack_notification_token
+      redis_ha_enable           = var.argocd_config.redis_ha_enabled
       autoscaling_enabled       = var.argocd_config.autoscaling_enabled
-      enable_argo_notifications = var.argocd_config.enable_argo_notifications
-      slack_token               = var.argocd_config.slack_token
+      enable_argo_notifications = var.argocd_config.argocd_notifications_enabled
     }),
     var.argocd_config.values_yaml
   ]

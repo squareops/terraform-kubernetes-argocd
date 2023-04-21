@@ -18,12 +18,12 @@ This module is compatible with EKS version 1.23, which is great news for users d
 module "argocd" {
   source = "../../"
   argocd_config = {
-    hostname                  = "argocd.squareops.in"
-    autoscaling_enabled       = true
-    redis_ha_enable           = false
-    enable_argo_notifications = true
-    slack_token               = "xoxb-skaf-4559734786594-xoxb"
-    values_yaml               = file("./helm/values.yaml")
+    hostname                   = "argoc.squareops.in"
+    values_yaml                = file("./helm/values.yaml")
+    redis_ha_enabled           = true
+    autoscaling_enabled        = true
+    slack_notification_token   = "xoxb-qQ8486bluEuvmxrYx"
+    argocd_notifications_enabled = true  
   }
 }
 
@@ -61,7 +61,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_argocd_config"></a> [argocd\_config](#input\_argocd\_config) | Argocd configurations | `any` | <pre>{<br>  "autoscaling_enabled": false,<br>  "enable_argo_notifications": false,<br>  "hostname": "",<br>  "redis_ha_enable": false,<br>  "slack_token": "",<br>  "values_yaml": ""<br>}</pre> | no |
+| <a name="input_argocd_config"></a> [argocd\_config](#input\_argocd\_config) | Argocd configurations | `any` | <pre>{<br>  "argocd_notifications_enabled": false,<br>  "autoscaling_enabled": false,<br>  "hostname": "",<br>  "redis_ha_enabled": false,<br>  "slack_notification_token": "",<br>  "values_yaml": ""<br>}</pre> | no |
 | <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Enter chart version of application | `string` | `"5.4.0"` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Enter namespace name | `string` | `"argocd"` | no |
 
@@ -69,8 +69,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_argocd_password"></a> [argocd\_password](#output\_argocd\_password) | Argocd Password |
-| <a name="output_argocd_username"></a> [argocd\_username](#output\_argocd\_username) | Argocd Username |
+| <a name="output_argocd"></a> [argocd](#output\_argocd) | Argocd\_Info |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Contribution & Issue Reporting

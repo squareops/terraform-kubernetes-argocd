@@ -1,7 +1,3 @@
-configs:
-  cm:
-    accounts.admin: apiKey
-
 controller:
   resources:
    limits:
@@ -10,12 +6,6 @@ controller:
    requests:
      cpu: 50m
      memory: 150Mi
-  metrics:
-    serviceMonitor:
-      enabled: true
-      additionalLabels:
-        release: "prometheus-operator"
-
 
 server:
   resources:
@@ -25,11 +15,6 @@ server:
    requests:
      cpu: 50m
      memory: 100Mi
-  metrics:
-    serviceMonitor:
-      enabled: true
-      additionalLabels:
-        release: "prometheus-operator"
 
 redis:
   resources:
@@ -39,15 +24,3 @@ redis:
    requests:
      cpu: 50m
      memory: 75Mi
-  metrics:
-    serviceMonitor:
-      enabled: true
-      additionalLabels:
-        release: "prometheus-operator"
-
-applicationSet:
-  metrics:
-    serviceMonitor:
-      enabled: true
-      additionalLabels:
-        release: "prometheus-operator"
