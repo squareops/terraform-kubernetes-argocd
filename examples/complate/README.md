@@ -39,6 +39,5 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_password"></a> [password](#output\_password) | password |
-| <a name="output_username"></a> [username](#output\_username) | Argocd Username |
+| <a name="output_argocd_credentials"></a> [argocd\_credentials](#output\_argocd\_credentials) | Argocd\_Info |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

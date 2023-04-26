@@ -1,9 +1,4 @@
-output "username" {
-  description = "Argocd Username"
-  value       = "admin"
-}
-
-output "password" {
-  description = "password"
-  value       = module.argocd.argocd_password
+output "argocd_credentials" {
+  description = "Argocd_Info"
+  value       = module.argocd.argocd
 }

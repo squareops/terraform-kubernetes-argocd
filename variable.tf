@@ -1,12 +1,12 @@
 variable "argocd_config" {
   type = any
   default = {
-    hostname                  = ""
-    autoscaling_enabled       = false
-    redis_ha_enable           = false
-    enable_argo_notifications = false
-    slack_token               = ""
-    values_yaml               = ""
+    hostname                     = ""
+    values_yaml                  = ""
+    redis_ha_enabled             = false
+    autoscaling_enabled          = false
+    slack_notification_token     = ""
+    argocd_notifications_enabled = false
   }
   description = "Argocd configurations"
 }
