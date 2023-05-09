@@ -14,9 +14,9 @@ This module is compatible with EKS version 1.23, which is great news for users d
 
 ## Supported Versions Table:
 
-| Resources             |  Helm Chart Version           |     K8s supported version   |      
-| :-----:              | :-----:                       |         :---                | 
-| Argocd               | **5.4.0**                     |    1.23,1.24,1.25           |
+|  Argocd Helm Chart Version    |     K8s supported version   |      
+| :-----:                       |         :---                | 
+| **5.4.0**                     |    1.23,1.24,1.25           |
 
 ## Usage Example
 

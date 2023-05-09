@@ -10,9 +10,9 @@ This example will be very useful for users who are new to a module and want to q
 
 ## Supported Versions Table:
 
-| Resources             |  Helm Chart Version           |     K8s supported version   |      
-| :-----:              | :-----:                       |         :---                | 
-| Argocd               | **5.4.0**                     |    1.23,1.24,1.25           |
+|  Argocd Helm Chart Version    |     K8s supported version   |      
+| :-----:                       |         :---                | 
+| **5.4.0**                     |    1.23,1.24,1.25           |
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
