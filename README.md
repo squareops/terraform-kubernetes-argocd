@@ -12,14 +12,21 @@ This module deploys ArgoCD with Redis High Availability (HA) as the backend data
 ## Important Notes:
 This module is compatible with EKS version 1.23, which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
 
+## Supported Versions:
+
+|  Argocd Helm Chart Version    |     K8s supported version   |  
+| :-----:                       |         :---                |
+| **5.4.0**                     |    **1.23,1.24,1.25**           |
+
+
 ## Usage Example
 
 ```hcl
 module "argocd" {
-  source = "../../"
+  source        = "https://github.com/sq-ia/terraform-kubernetes-argocd.git"
   argocd_config = {
-    hostname                   = "argoc.squareops.in"
-    values_yaml                = file("./helm/values.yaml")
+    hostname                   = "argocd.squareops.in"
+    values_yaml                = ""
     redis_ha_enabled           = true
     autoscaling_enabled        = true
     slack_notification_token   = "xoxb-qQ8486bluEuvmxrYx"
@@ -61,9 +68,9 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_argocd_config"></a> [argocd\_config](#input\_argocd\_config) | Argocd configurations | `any` | <pre>{<br>  "argocd_notifications_enabled": false,<br>  "autoscaling_enabled": false,<br>  "hostname": "",<br>  "redis_ha_enabled": false,<br>  "slack_notification_token": "",<br>  "values_yaml": ""<br>}</pre> | no |
-| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Enter chart version of application | `string` | `"5.4.0"` | no |
-| <a name="input_namespace"></a> [namespace](#input\_namespace) | Enter namespace name | `string` | `"argocd"` | no |
+| <a name="input_argocd_config"></a> [argocd\_config](#input\_argocd\_config) | Specify the configuration settings for Argocd, including the hostname, redis\_ha\_enabled, autoscaling, notification settings, and custom YAML values. | `any` | <pre>{<br>  "argocd_notifications_enabled": false,<br>  "autoscaling_enabled": false,<br>  "hostname": "",<br>  "redis_ha_enabled": false,<br>  "slack_notification_token": "",<br>  "values_yaml": ""<br>}</pre> | no |
+| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Version of the Argocd chart that will be used to deploy Argocd application. | `string` | `"5.4.0"` | no |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | Name of the Kubernetes namespace where the Argocd deployment will be deployed. | `string` | `"argocd"` | no |
 
 ## Outputs
 

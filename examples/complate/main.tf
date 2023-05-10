@@ -1,13 +1,15 @@
 locals {
   region = "us-east-2"
   additional_tags = {
-    Name        = "skaf"
+    Owner       = "organization_name"
+    Expires     = "Never"
+    Department  = "Engineering"
     environment = "prod"
   }
 }
 
 module "argocd" {
-  source = "../../"
+  source        = "https://github.com/sq-ia/terraform-kubernetes-argocd.git"
   argocd_config = {
     hostname                     = "argocd.ref.dev.skaf.squareops.in"
     values_yaml                  = file("./helm/values.yaml")
