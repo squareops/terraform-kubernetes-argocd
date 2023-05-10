@@ -12,6 +12,12 @@ This module deploys ArgoCD with Redis High Availability (HA) as the backend data
 ## Important Notes:
 This module is compatible with EKS version 1.23, which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
 
+## Supported Versions Table:
+
+|  Argocd Helm Chart Version    |     K8s supported version   |      
+| :-----:                       |         :---                | 
+| **5.4.0**                     |    1.23,1.24,1.25           |
+
 ## Usage Example
 
 ```hcl
