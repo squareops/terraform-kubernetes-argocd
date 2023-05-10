@@ -10,7 +10,7 @@
 This module deploys ArgoCD with Redis High Availability (HA) as the backend data store, and Slack notifications configured for real-time updates about deployments. With this module, you can automate your application deployment process with the GitOps methodology and ensure that the desired state of your application is always in sync with the actual state. Redis HA provides enhanced resilience and availability, while Slack notifications keep you informed of the status of your deployments.
 
 ## Important Notes:
-This module is compatible with EKS version 1.23, which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
+This module is compatible with EKS version 1.23,1.24 and 1.25 which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
 
 ## Supported Versions:
 
