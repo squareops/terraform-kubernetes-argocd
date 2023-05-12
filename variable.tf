@@ -8,17 +8,17 @@ variable "argocd_config" {
     slack_notification_token     = ""
     argocd_notifications_enabled = false
   }
-  description = "Argocd configurations"
+  description = "Specify the configuration settings for Argocd, including the hostname, redis_ha_enabled, autoscaling, notification settings, and custom YAML values."
 }
 
 variable "chart_version" {
   type        = string
   default     = "5.4.0"
-  description = "Enter chart version of application"
+  description = "Version of the Argocd chart that will be used to deploy Argocd application."
 }
 
 variable "namespace" {
   type        = string
   default     = "argocd"
-  description = "Enter namespace name"
+  description = "Name of the Kubernetes namespace where the Argocd deployment will be deployed."
 }
