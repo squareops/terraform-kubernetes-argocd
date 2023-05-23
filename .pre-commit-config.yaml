@@ -26,4 +26,8 @@ repos:
         files: ^examples/ # only scan `examples/*` which are the implementation
         args:
           - --args=--config-file=__GIT_WORKING_DIR__/tfsec.yaml
-          - --args=--concise-output
+          - --args=--format
+          - --args=html
+          - --args=--out
+          - --args=https://github.com/sq-ia/terraform-kubernetes-argocd/result.html
+          
