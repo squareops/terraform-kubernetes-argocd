@@ -29,5 +29,5 @@ repos:
           - --args=--format
           - --args=html
           - --args=--out
-          - --args=https://github.com/sq-ia/terraform-kubernetes-argocd/result.html
+          - --args=../result.html
           
