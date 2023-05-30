@@ -29,5 +29,5 @@ repos:
           - --args=--format
           - --args=html
           - --args=--out
-          - --args=../../../result.html
+          - --args=../../../tfsec.html
           
