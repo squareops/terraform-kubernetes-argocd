@@ -22,7 +22,7 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_argocd"></a> [argocd](#module\_argocd) | ../../ | n/a |
+| <a name="module_argocd"></a> [argocd](#module\_argocd) | squareops/argocd/kubernetes.git | n/a |
 
 ## Resources
 

@@ -9,9 +9,9 @@ locals {
 }
 
 module "argocd" {
-  source        = "https://github.com/sq-ia/terraform-kubernetes-argocd.git"
+  source = "squareops/argocd/kubernetes.git"
   argocd_config = {
-    hostname                     = "argocd.squareops.in"
+    hostname                     = "argocd.org.in"
     values_yaml                  = file("./helm/values.yaml")
     redis_ha_enabled             = true
     autoscaling_enabled          = true
