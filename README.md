@@ -23,9 +23,9 @@ This module is compatible with EKS version 1.23,1.24 and 1.25 which is great new
 
 ```hcl
 module "argocd" {
-  source        = "squareops/argocd/kubernetes.git"
+  source        = "squareops/argocd/kubernetes"
   argocd_config = {
-    hostname                   = "argocd.squareops.in"
+    hostname                   = "argocd.prod.in"
     values_yaml                = ""
     redis_ha_enabled           = true
     autoscaling_enabled        = true
