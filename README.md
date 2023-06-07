@@ -23,9 +23,9 @@ This module is compatible with EKS version 1.23,1.24 and 1.25 which is great new
 
 ```hcl
 module "argocd" {
-  source        = "https://github.com/sq-ia/terraform-kubernetes-argocd.git"
+  source        = "squareops/argocd/kubernetes"
   argocd_config = {
-    hostname                   = "argocd.squareops.in"
+    hostname                   = "argocd.prod.in"
     values_yaml                = ""
     redis_ha_enabled           = true
     autoscaling_enabled        = true
@@ -35,10 +35,10 @@ module "argocd" {
 }
 
 ```
-Refer [examples](https://github.com/sq-ia/terraform-kubernetes-argocd/tree/main/examples/complete) for more details.
+Refer [examples](https://github.com/squareops/terraform-kubernetes-argocd/tree/main/examples/complete) for more details.
 
 ## IAM Permissions
-The required IAM permissions to create resources from this module can be found [here](https://github.com/sq-ia/terraform-kubernetes-argocd/blob/main/IAM.md)
+The required IAM permissions to create resources from this module can be found [here](https://github.com/squareops/terraform-kubernetes-argocd/blob/main/IAM.md)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -83,7 +83,7 @@ No modules.
 
 To report an issue with a project:
 
-  1. Check the repository's [issue tracker](https://github.com/sq-ia/terraform-kubernetes-argocd/issues) on GitHub
+  1. Check the repository's [issue tracker](https://github.com/squareops/terraform-kubernetes-argocd/issues) on GitHub
   2. Search to see if the issue has already been reported
   3. If you can't find an answer to your question in the documentation or issue tracker, you can ask a question by creating a new issue. Be sure to provide enough context and details so others can understand your problem.
 
@@ -95,7 +95,7 @@ Apache License, Version 2.0, January 2004 (http://www.apache.org/licenses/).
 
 To support a GitHub project by liking it, you can follow these steps:
 
-  1. Visit the repository: Navigate to the [GitHub repository](https://github.com/sq-ia/terraform-kubernetes-argocd).
+  1. Visit the repository: Navigate to the [GitHub repository](https://github.com/squareops/terraform-kubernetes-argocd).
 
   2. Click the "Star" button: On the repository page, you'll see a "Star" button in the upper right corner. Clicking on it will star the repository, indicating your support for the project.
 
