@@ -1,6 +1,9 @@
 resource "kubernetes_namespace" "argocd" {
   metadata {
     name = var.namespace
+    labels = {
+      "pod-security.kubernetes.io/warn" = "restricted"
+    }
   }
 }
 
