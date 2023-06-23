@@ -11,11 +11,11 @@ locals {
 module "argocd" {
   source = "squareops/argocd/kubernetes"
   argocd_config = {
-    hostname                     = "argocd.gcp.skaf.squareops.in"
+    hostname                     = "argocd.prod.in"
     values_yaml                  = file("./helm/values.yaml")
     redis_ha_enabled             = true
     autoscaling_enabled          = true
-    slack_notification_token     = "xoxb-379541400966-4559734786594-DeSE4dOlRftr02w08mtwhYLc"
+    slack_notification_token     = "xoxb-asdfghjk"
     argocd_notifications_enabled = true
   }
 }
