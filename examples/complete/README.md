@@ -7,6 +7,12 @@
 ### [SquareOps Technologies](https://squareops.com/) Your DevOps Partner for Accelerating cloud journey.
 <br>
 This example will be very useful for users who are new to a module and want to quickly learn how to use it. By reviewing the examples, users can gain a better understanding of how the module works, what features it supports, and how to customize it to their specific needs.
+
+## Usage
+
+Use the provider file as per your need. 
+- If deploying into AWS EKS use `provider-aws.tf` file and remove `provider-gcp.tf` file.
+- If deploying into Google GKE use `provider-gcp.tf` file and remove `provider-aws.tf` file.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
