@@ -15,7 +15,7 @@ module "argocd" {
     values_yaml                  = file("./helm/values.yaml")
     redis_ha_enabled             = true
     autoscaling_enabled          = true
-    slack_notification_token     = "xoxb-asdfghjk"
+    slack_notification_token     = "xoxb-qQ8486bluEuvmxrYx"
     argocd_notifications_enabled = true
   }
 }
