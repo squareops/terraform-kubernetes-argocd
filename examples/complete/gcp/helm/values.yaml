@@ -1,0 +1,26 @@
+controller:
+  resources:
+   limits:
+     cpu: 200m
+     memory: 500Mi
+   requests:
+     cpu: 50m
+     memory: 150Mi
+
+server:
+  resources:
+   limits:
+     cpu: 200m
+     memory: 200Mi
+   requests:
+     cpu: 50m
+     memory: 100Mi
+
+redis:
+  resources:
+   limits:
+     cpu: 200m
+     memory: 150Mi
+   requests:
+     cpu: 50m
+     memory: 75Mi
