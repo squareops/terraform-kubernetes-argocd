@@ -1,0 +1,56 @@
+controller:
+  resources:
+   limits:
+     cpu: 400m
+     memory: 512Mi
+   requests:
+     cpu: 100m
+     memory: 200Mi
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "Addons-Services"
+              operator: In
+              values:
+              - "true"
+repoServer:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "Addons-Services"
+              operator: In
+              values:
+              - "true"
+
+server:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "Addons-Services"
+              operator: In
+              values:
+              - "true"
+
+redis:
+  resources:
+   limits:
+     cpu: 400m
+     memory: 500Mi
+   requests:
+     cpu: 100m
+     memory: 150Mi
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "Addons-Services"
+              operator: In
+              values:
+              - "true"
