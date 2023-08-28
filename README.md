@@ -10,13 +10,13 @@
 This module deploys ArgoCD with Redis High Availability (HA) as the backend data store, and Slack notifications configured for real-time updates about deployments. With this module, you can automate your application deployment process with the GitOps methodology and ensure that the desired state of your application is always in sync with the actual state. Redis HA provides enhanced resilience and availability, while Slack notifications keep you informed of the status of your deployments.
 
 ## Important Notes:
-This module is compatible with EKS version 1.23,1.24 and 1.25 which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
+This module is compatible with EKS, AKS & GKE which is great news for users deploying the module on an AWS, Azure & GCP cloud. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
 
 ## Supported Versions:
 
-|  Argocd Helm Chart Version    |     K8s supported version   |  
+|  Argocd Helm Chart Version    |     K8s supported version (EKS, AKS & GKE)   |  
 | :-----:                       |         :---                |
-| **5.4.0**                     |    **1.23,1.24,1.25**           |
+| **5.4.0**                     |    **1.23,1.24,1.25,1.26,1.27**           |
 
 
 ## Usage Example
@@ -35,7 +35,9 @@ module "argocd" {
 }
 
 ```
-Refer [examples](https://github.com/squareops/terraform-kubernetes-argocd/tree/main/examples/complete) for more details.
+- Refer [AWS examples](https://github.com/squareops/terraform-kubernetes-argocd/tree/main/examples/complete/aws) for more details.
+- Refer [Azure examples](https://github.com/squareops/terraform-kubernetes-argocd/tree/main/examples/complete/azure) for more details.
+- Refer [GCP examples](https://github.com/squareops/terraform-kubernetes-argocd/tree/main/examples/complete/gcp) for more details.
 
 ## IAM Permissions
 The required IAM permissions to create resources from this module can be found [here](https://github.com/squareops/terraform-kubernetes-argocd/blob/main/IAM.md)
