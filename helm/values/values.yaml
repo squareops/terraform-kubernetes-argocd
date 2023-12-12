@@ -3,6 +3,24 @@ configs:
     accounts.admin: apiKey
 
 applicationSet:
+  resources:
+   limits:
+     cpu: 200m
+     memory: 150Mi
+   requests:
+     cpu: 20m
+     memory: 50Mi
+
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "cicd-services"
+              operator: In
+              values:
+              - "true"
   metrics:
     serviceMonitor:
       enabled: true
@@ -110,6 +128,26 @@ server:
               values:
               - "true"
 
+dex:
+  resources:
+   limits:
+     cpu: 200m
+     memory: 150Mi
+   requests:
+     cpu: 20m
+     memory: 50Mi
+
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "cicd-services"
+              operator: In
+              values:
+              - "true"
+
 redis:
   resources:
    limits:
@@ -161,6 +199,15 @@ notifications:
     service.slack: |
       token: $slack-token
 
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "cicd-services"
+              operator: In
+              values:
+              - "true"
   resources:
     limits:
       cpu: 500m
