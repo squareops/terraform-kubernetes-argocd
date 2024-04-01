@@ -71,7 +71,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_argocd_config"></a> [argocd\_config](#input\_argocd\_config) | Specify the configuration settings for Argocd, including the hostname, redis\_ha\_enabled, autoscaling, notification settings, and custom YAML values. | `any` | <pre>{<br>  "argocd_notifications_enabled": false,<br>  "autoscaling_enabled": false,<br>  "hostname": "",<br>  "redis_ha_enabled": false,<br>  "slack_notification_token": "",<br>  "values_yaml": ""<br>}</pre> | no |
-| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Version of the Argocd chart that will be used to deploy Argocd application. | `string` | `"5.53.11"` | no |
+| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Version of the Argocd chart that will be used to deploy Argocd application. | `string` | `"6.7.3"` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Name of the Kubernetes namespace where the Argocd deployment will be deployed. | `string` | `"argocd"` | no |
 
 ## Outputs
