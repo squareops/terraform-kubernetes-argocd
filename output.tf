@@ -1,5 +1,5 @@
 output "argocd" {
-  description = "Argocd_Info"
+  description = "Information about the ArgoCD, including the username, password, and URL."
   value = {
     username = "admin",
     password = nonsensitive(data.kubernetes_secret.argocd-secret.data.password),
