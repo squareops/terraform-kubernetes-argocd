@@ -16,7 +16,7 @@ This module is compatible with EKS, AKS & GKE which is great news for users depl
 
 |  Argocd Helm Chart Version    |     K8s supported version (EKS, AKS & GKE)   |  
 | :-----:                       |         :---                |
-| **5.53.11**                     |    **1.23,1.24,1.25,1.26,1.27**           |
+| **6.7.3**                     |    **1.23,1.24,1.25,1.26,1.27,1.28**           |
 
 
 ## Usage Example
