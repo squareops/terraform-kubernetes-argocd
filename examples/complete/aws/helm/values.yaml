@@ -12,7 +12,7 @@ controller:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -22,7 +22,7 @@ repoServer:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -48,7 +48,7 @@ notifications:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -67,7 +67,7 @@ server:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -87,7 +87,7 @@ redis:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -107,7 +107,7 @@ dex:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -127,7 +127,7 @@ applicationSet:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
