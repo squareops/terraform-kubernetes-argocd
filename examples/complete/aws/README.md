@@ -48,7 +48,7 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_argocd"></a> [argocd](#module\_argocd) | squareops/argocd/kubernetes | n/a |
+| <a name="module_argocd"></a> [argocd](#module\_argocd) | ../../../ | n/a |
 
 ## Resources
 
@@ -65,5 +65,5 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_argocd_credentials"></a> [argocd\_credentials](#output\_argocd\_credentials) | Argocd\_Info |
+| <a name="output_argocd_credentials"></a> [argocd\_credentials](#output\_argocd\_credentials) | Information about the ArgoCD, including the username, password, and URL. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

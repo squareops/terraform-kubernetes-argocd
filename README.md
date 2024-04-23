@@ -78,7 +78,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_argocd"></a> [argocd](#output\_argocd) | Argocd\_Info |
+| <a name="output_argocd"></a> [argocd](#output\_argocd) | Information about the ArgoCD, including the username, password, and URL. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Contribution & Issue Reporting
