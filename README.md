@@ -1,8 +1,10 @@
 ## argocd
 
-![squareops_avatar]
-
-[squareops_avatar]: https://squareops.com/wp-content/uploads/2022/12/squareops-logo.png
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://squareops.com/wp-content/uploads/2020/05/Squareops-png-white.png1-3.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://squareops.com/wp-content/uploads/2021/09/Squareops-png-1-1.png">
+  <img src="https://squareops.com/wp-content/uploads/2021/09/Squareops-png-1-1.png">
+</picture>
 
 ### [SquareOps Technologies](https://squareops.com/) Your DevOps Partner for Accelerating cloud journey.
 <br>
@@ -16,7 +18,7 @@ This module is compatible with EKS, AKS & GKE which is great news for users depl
 
 |  Argocd Helm Chart Version    |     K8s supported version (EKS, AKS & GKE)   |  
 | :-----:                       |         :---                |
-| **5.53.11**                     |    **1.23,1.24,1.25,1.26,1.27**           |
+| **6.7.3**                     |    **1.23,1.24,1.25,1.26,1.27,1.28**           |
 
 
 ## Usage Example
@@ -71,14 +73,14 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_argocd_config"></a> [argocd\_config](#input\_argocd\_config) | Specify the configuration settings for Argocd, including the hostname, redis\_ha\_enabled, autoscaling, notification settings, and custom YAML values. | `any` | <pre>{<br>  "argocd_notifications_enabled": false,<br>  "autoscaling_enabled": false,<br>  "hostname": "",<br>  "redis_ha_enabled": false,<br>  "slack_notification_token": "",<br>  "values_yaml": ""<br>}</pre> | no |
-| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Version of the Argocd chart that will be used to deploy Argocd application. | `string` | `"5.53.11"` | no |
+| <a name="input_helm_chart_version"></a> [helm\_chart\_version](#input\_helm\_chart\_version) | Version of the Argocd chart that will be used to deploy Argocd application. | `string` | `"6.7.3"` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Name of the Kubernetes namespace where the Argocd deployment will be deployed. | `string` | `"argocd"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_argocd"></a> [argocd](#output\_argocd) | Argocd\_Info |
+| <a name="output_argocd"></a> [argocd](#output\_argocd) | Information about the ArgoCD, including the username, password, and URL. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Contribution & Issue Reporting
