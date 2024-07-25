@@ -1,8 +1,8 @@
 controller:
   resources:
    limits:
-     cpu: 200m
-     memory: 800Mi
+     cpu: 100m
+     memory: 500Mi
    requests:
      cpu: 50m
      memory: 250Mi
@@ -12,7 +12,7 @@ controller:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -22,13 +22,13 @@ repoServer:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
   resources:
    limits:
-     cpu: 50m
+     cpu: 20m
      memory: 200Mi
    requests:
      cpu: 10m
@@ -38,8 +38,8 @@ repoServer:
 notifications:
   resources:
    limits:
-     cpu: 50m
-     memory: 128Mi
+     cpu: 20m
+     memory: 100Mi
    requests:
      cpu: 10m
      memory: 50Mi
@@ -48,7 +48,7 @@ notifications:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -56,7 +56,7 @@ notifications:
 server:
   resources:
    limits:
-     cpu: 200m
+     cpu: 100m
      memory: 200Mi
    requests:
      cpu: 50m
@@ -67,7 +67,7 @@ server:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -75,7 +75,7 @@ server:
 redis:
   resources:
    limits:
-     cpu: 200m
+     cpu: 100m
      memory: 150Mi
    requests:
      cpu: 50m
@@ -87,7 +87,7 @@ redis:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -95,8 +95,8 @@ redis:
 dex:
   resources:
    limits:
-     cpu: 200m
-     memory: 150Mi
+     cpu: 40m
+     memory: 100Mi
    requests:
      cpu: 20m
      memory: 50Mi
@@ -107,7 +107,7 @@ dex:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -115,8 +115,8 @@ dex:
 applicationSet:
   resources:
    limits:
-     cpu: 200m
-     memory: 150Mi
+     cpu: 40m
+     memory: 100Mi
    requests:
      cpu: 20m
      memory: 50Mi
@@ -127,7 +127,7 @@ applicationSet:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"

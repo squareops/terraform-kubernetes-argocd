@@ -1,11 +1,14 @@
+global:
+  domain: "${hostname}"
+
 configs:
-  cm:
-    accounts.admin: apiKey
+  params:
+    server.insecure: true
 
 applicationSet:
   resources:
    limits:
-     cpu: 200m
+     cpu: 40m
      memory: 150Mi
    requests:
      cpu: 20m
@@ -17,7 +20,7 @@ applicationSet:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -49,7 +52,7 @@ controller:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "Infra-Services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -65,18 +68,21 @@ repoServer:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "Infra-Services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
   podAnnotation:
     co.elastic.logs/enabled: "true"
 
+certificate:
+  enabled: true
+
 server:
   config:
     accounts.admin: apiKey   #login is available as default on admin user
     accounts.qa: apiKey,login
-  rbacConfig:
+  rbac:
     policy.csv: |
       p, role:readonly, applications, get, */*, allow
       p, role:readonly, certificates, get, *, allow
@@ -89,8 +95,8 @@ server:
       g, qa, role:readonly
   resources:
    limits:
-     cpu: 400m
-     memory: 500Mi
+     cpu: 200m
+     memory: 300Mi
    requests:
      cpu: 100m
      memory: 150Mi
@@ -104,14 +110,21 @@ server:
     enabled: ${autoscaling_enabled}
   ingress:
     enabled: true
-    hosts: [${hostname}]
+    ingressClassName: ${ingress_class_name}
     annotations:
-      kubernetes.io/ingress.class: "nginx"
+      kubernetes.io/ingress.class: ${ingress_class_name}
       kubernetes.io/tls-acme: "true"
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    tls:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    hosts:
+    - host: ${hostname}
+    paths:
+      - path: /
+        pathType: ImplementationSpecific
+      
+    extraTls:
       - secretName: argocd-tls
         hosts:
           - ${hostname}
@@ -123,7 +136,7 @@ server:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "Infra-Services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -131,8 +144,8 @@ server:
 dex:
   resources:
    limits:
-     cpu: 200m
-     memory: 150Mi
+     cpu: 40m
+     memory: 100Mi
    requests:
      cpu: 20m
      memory: 50Mi
@@ -143,7 +156,7 @@ dex:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -151,8 +164,8 @@ dex:
 redis:
   resources:
    limits:
-     cpu: 400m
-     memory: 500Mi
+     cpu: 200m
+     memory: 300Mi
    requests:
      cpu: 100m
      memory: 150Mi
@@ -167,7 +180,7 @@ redis:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "Infra-Services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
@@ -204,14 +217,14 @@ notifications:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "cicd-services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
   resources:
     limits:
-      cpu: 500m
-      memory: 512Mi
+      cpu: 200m
+      memory: 256Mi
     requests:
       cpu: 100m
       memory: 128Mi

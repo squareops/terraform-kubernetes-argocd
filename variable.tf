@@ -13,7 +13,7 @@ variable "argocd_config" {
 
 variable "chart_version" {
   type        = string
-  default     = "5.53.11"
+  default     = "7.3.10"
   description = "Version of the Argocd chart that will be used to deploy Argocd application."
 }
 
@@ -21,4 +21,10 @@ variable "namespace" {
   type        = string
   default     = "argocd"
   description = "Name of the Kubernetes namespace where the Argocd deployment will be deployed."
+}
+
+variable "ingress_class_name" {
+  type = string
+  default = "ingress-nginx"
+  description = "Enter ingress class name which is created in EKS cluster"
 }
