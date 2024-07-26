@@ -1,26 +1,137 @@
+configs:
+  cm:
+    accounts.admin: apiKey
+
 controller:
   resources:
    limits:
-     cpu: 200m
+     cpu: 100m
      memory: 500Mi
    requests:
      cpu: 50m
-     memory: 150Mi
+     memory: 250Mi
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "Addons-Services"
+              operator: In
+              values:
+              - "true"
+repoServer:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "Addons-Services"
+              operator: In
+              values:
+              - "true"
+  resources:
+   limits:
+     cpu: 20m
+     memory: 200Mi
+   requests:
+     cpu: 10m
+     memory: 100Mi
+
+
+notifications:
+  resources:
+   limits:
+     cpu: 20m
+     memory: 100Mi
+   requests:
+     cpu: 10m
+     memory: 50Mi
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "Addons-Services"
+              operator: In
+              values:
+              - "true"
 
 server:
   resources:
    limits:
-     cpu: 200m
+     cpu: 100m
      memory: 200Mi
    requests:
      cpu: 50m
      memory: 100Mi
 
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "Addons-Services"
+              operator: In
+              values:
+              - "true"
+
 redis:
   resources:
    limits:
-     cpu: 200m
+     cpu: 100m
      memory: 150Mi
    requests:
      cpu: 50m
      memory: 75Mi
+
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "Addons-Services"
+              operator: In
+              values:
+              - "true"
+
+dex:
+  resources:
+   limits:
+     cpu: 40m
+     memory: 100Mi
+   requests:
+     cpu: 20m
+     memory: 50Mi
+
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "Addons-Services"
+              operator: In
+              values:
+              - "true"
+
+applicationSet:
+  resources:
+   limits:
+     cpu: 40m
+     memory: 100Mi
+   requests:
+     cpu: 20m
+     memory: 50Mi
+
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "Addons-Services"
+              operator: In
+              values:
+              - "true"

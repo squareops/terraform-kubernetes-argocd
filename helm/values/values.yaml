@@ -1,29 +1,31 @@
-configs:
-  cm:
-    accounts.admin: apiKey
+## Globally shared configuration 7.1.3
+global:
+  # -- Default domain used by all components
+  ## Used for ingresses, certificates, SSO, notifications, etc.
+  domain: ${hostname}
 
-applicationSet:
-  metrics:
-    serviceMonitor:
-      enabled: true
-      additionalLabels:
-        release: "prometheus-operator"
+  # -- Deployment strategy for the all deployed Deployments
+  deploymentStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
 
 controller:
   resources:
    limits:
-     cpu: 400m
-     memory: 512Mi
+     cpu: 1000m
+     memory: 1024Mi
    requests:
-     cpu: 100m
-     memory: 200Mi
+     cpu: 250m
+     memory: 256Mi
   metrics:
     enabled: true
     serviceMonitor:
       enabled: true
       additionalLabels:
         release: "prometheus-operator"
-  podAnnotation:
+  podAnnotations:
     co.elastic.logs/enabled: "true"
 
   affinity:
@@ -31,10 +33,11 @@ controller:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "Infra-Services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
+
 repoServer:
   metrics:
     enabled: true
@@ -47,18 +50,16 @@ repoServer:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "Infra-Services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
-  podAnnotation:
+  podAnnotations:
     co.elastic.logs/enabled: "true"
 
-server:
-  config:
-    accounts.admin: apiKey   #login is available as default on admin user
-    accounts.qa: apiKey,login
-  rbacConfig:
+configs:
+  rbac:
+    create: true
     policy.csv: |
       p, role:readonly, applications, get, */*, allow
       p, role:readonly, certificates, get, *, allow
@@ -69,6 +70,13 @@ server:
       p, role:readonly, gpgkeys, get, *, allow
       p, role:readonly, logs, get, */*, allow
       g, qa, role:readonly
+
+server:
+  config:
+    accounts.admin: apiKey   #login is available as default on admin user
+    accounts.qa: apiKey,login
+  extraArgs:
+   - --insecure
   resources:
    limits:
      cpu: 400m
@@ -84,37 +92,36 @@ server:
         release: "prometheus-operator"
   autoscaling:
     enabled: ${autoscaling_enabled}
+  # Argo CD server ingress configuration
   ingress:
     enabled: true
-    hosts: [${hostname}]
     annotations:
-      kubernetes.io/ingress.class: "nginx"
-      kubernetes.io/tls-acme: "true"
-      cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    tls:
-      - secretName: argocd-tls
-        hosts:
-          - ${hostname}
-  podAnnotation:
+    ingressClassName: ${ingress_class_name}
+    hostname: ${hostname}
+    path: /
+    pathType: Prefix
+    tls: true
+  podAnnotations:
     co.elastic.logs/enabled: "true"
-
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "Infra-Services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
 
 redis:
+  enabled: true
   resources:
    limits:
-     cpu: 400m
-     memory: 500Mi
+     cpu: 500m
+     memory: 750Mi
    requests:
      cpu: 100m
      memory: 150Mi
@@ -129,24 +136,21 @@ redis:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-            - key: "Infra-Services"
+            - key: "Addons-Services"
               operator: In
               values:
               - "true"
-  podAnnotation:
+  podAnnotations:
     co.elastic.logs/enabled: "true"
-
 
 redis-ha:
   enabled: ${redis_ha_enable}
   exporter:
     enabled: true
 
+## Notifications controller
 notifications:
-  # -- Enable notifications controller
   enabled: ${enable_argo_notifications}
-  argocdUrl: ${hostname}
-
   secret:
     items:
       slack-token: ${slack_token}
@@ -156,11 +160,9 @@ notifications:
       enabled: true
       additionalLabels:
         release: "prometheus-operator"
-
   notifiers:
     service.slack: |
       token: $slack-token
-
   resources:
     limits:
       cpu: 500m
@@ -168,6 +170,16 @@ notifications:
     requests:
       cpu: 100m
       memory: 128Mi
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: "Addons-Services"
+              operator: In
+              values:
+              - "true"
+
 
   templates:
       template.app-deployed: |
@@ -383,6 +395,7 @@ notifications:
               {{end}}
               ]
             }]
+
 
   triggers:
     trigger.on-deployed: |
