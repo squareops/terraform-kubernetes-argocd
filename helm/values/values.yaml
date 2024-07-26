@@ -79,8 +79,8 @@ server:
    - --insecure
   resources:
    limits:
-     cpu: 400m
-     memory: 500Mi
+     cpu: 200m
+     memory: 300Mi
    requests:
      cpu: 100m
      memory: 150Mi
@@ -165,8 +165,8 @@ notifications:
       token: $slack-token
   resources:
     limits:
-      cpu: 500m
-      memory: 512Mi
+      cpu: 200m
+      memory: 256Mi
     requests:
       cpu: 100m
       memory: 128Mi

@@ -23,3 +23,9 @@ variable "namespace" {
   default     = "argocd"
   description = "Name of the Kubernetes namespace where the Argocd deployment will be deployed."
 }
+
+variable "ingress_class_name" {
+  type = string
+  default = "ingress-nginx"
+  description = "Enter ingress class name which is created in EKS cluster"
+}
