@@ -1,3 +1,7 @@
+configs:
+  cm:
+    accounts.admin: apiKey
+
 controller:
   resources:
    limits:
