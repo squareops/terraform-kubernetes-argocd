@@ -19,6 +19,8 @@ resource "helm_release" "argocd_deploy" {
       redis_ha_enable           = var.argocd_config.redis_ha_enabled
       autoscaling_enabled       = var.argocd_config.autoscaling_enabled
       enable_argo_notifications = var.argocd_config.argocd_notifications_enabled
+      ingress_class_name        = var.argocd_config.ingress_class_name
+
     }),
     var.argocd_config.values_yaml
   ]
